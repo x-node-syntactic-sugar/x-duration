@@ -1,0 +1,12 @@
+{
+  "name": "x-duration",
+  "version": "0.0.1",
+  "description": "Syntactic sugar functions to handle durations and dates",
+  "keywords": [
+    "duration",
+    "date",
+    "luxon"
+  ],
+  "author": "David Brown",
+  "license": "MIT"
+}
