@@ -8,5 +8,8 @@
     "luxon"
   ],
   "author": "David Brown",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "luxon": "3.x"
+  }
 }
