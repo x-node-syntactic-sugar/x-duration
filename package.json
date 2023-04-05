@@ -2,6 +2,11 @@
   "name": "x-duration",
   "version": "0.0.1",
   "description": "Syntactic sugar functions to handle durations and dates",
+  "scripts": {
+    "build": "npm run clean && npm run build:es6",
+    "build:es6": "tsc",
+    "clean": "rm -rf dist coverage"
+  },
   "keywords": [
     "duration",
     "date",
@@ -11,5 +16,15 @@
   "license": "MIT",
   "peerDependencies": {
     "luxon": "3.x"
-  }
+  },
+  "devDependencies": {
+    "@types/luxon": "3.2.2",
+    "typescript": "5.0.2"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [
+    "dist"
+  ]
 }
