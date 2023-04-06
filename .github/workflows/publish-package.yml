@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
 
+# Ensure unicity by branch name
+concurrency:
+  group: environment-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
