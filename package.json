@@ -1,6 +1,6 @@
 {
   "name": "x-duration",
-  "version": "0.0.2",
+  "version": "0.2.1",
   "description": "Syntactic sugar functions to handle durations and dates",
   "scripts": {
     "dev": "jest --watchAll",
