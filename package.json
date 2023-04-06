@@ -10,7 +10,8 @@
     "build:browser": "rollup --input ./dist/es6/index.js --format iife --sourcemap --name XDuration --plugin node-resolve,terser --file dist/browser/x-duration.min.js",
     "clean": "rm -rf dist coverage",
     "test": "jest",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "duration",
