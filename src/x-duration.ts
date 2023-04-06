@@ -132,11 +132,11 @@ export class XDuration {
     return this.valueOf();
   }
 
-  toISO(): string {
+  toISO(): string | null {
     return this.#duration.toISO();
   }
 
-  toJSON(): string {
+  toJSON(): string | null {
     return this.toISO();
   }
 

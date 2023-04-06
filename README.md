@@ -208,10 +208,10 @@ declare class XDuration {
   toString(): number;
 
   // Returns ISO 8601 format
-  toISO(): string;
+  toISO(): string | null;
 
   // Alias of `toISO`
-  toJSON(): string;
+  toJSON(): string | null;
 
   // Returns the formatted duration
   toFormat(
