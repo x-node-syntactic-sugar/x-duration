@@ -1,16 +1,16 @@
+import d from "..";
 import { XDuration } from "../x-duration";
-import { XDurationFactory } from "../x-duration-factory";
 
-const complexDuration = XDuration.sum(
+const complexDuration = d.sum(
   // @ts-ignore
-  new XDurationFactory(1).year +
-    new XDurationFactory(1).month +
-    new XDurationFactory(1).week +
-    new XDurationFactory(1).day +
-    new XDurationFactory(1).hour +
-    new XDurationFactory(1).minute +
-    new XDurationFactory(1).second +
-    new XDurationFactory(1).millisecond
+  d(1).year +
+    d(1).month +
+    d(1).week +
+    d(1).day +
+    d(1).hour +
+    d(1).minute +
+    d(1).second +
+    d(1).millisecond
 );
 
 describe("XDuration - Outputs", () => {

@@ -30,10 +30,6 @@ export class XDuration {
     this.#duration = LuxonDuration.fromObject(parts);
   }
 
-  static sum(value: number): XDuration {
-    return new XDuration({ milliseconds: value }).rescale();
-  }
-
   /**
    * Unit converters
    */
@@ -78,7 +74,7 @@ export class XDuration {
   }
 
   /**
-   * Transformations
+   * Transformations (mutates the current object)
    */
   plus(duration: XDuration): XDuration {
     this.#duration = this.#duration.plus(duration.toObject());
