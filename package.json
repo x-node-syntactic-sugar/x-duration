@@ -38,6 +38,7 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/es6/index.d.ts",
       "import": "./dist/es6/index.js",
       "require": "./dist/cjs/index.js"
     },
