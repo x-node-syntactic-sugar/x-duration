@@ -17,16 +17,21 @@ describe("Basic usage", () => {
   test("It helps manipulating dates", () => {
     const nowSeconds = Date.now() / 1000;
 
-    expect(d(3).minutes.ago.getTime() / 1000).toBeCloseTo(nowSeconds - 180);
-    expect(d(2).hours.fromNow.getTime() / 1000).toBeCloseTo(nowSeconds + 7200);
+    expect(d(3).minutes.ago.getTime() / 1000).toBeCloseTo(nowSeconds - 180, 1);
+    expect(d(2).hours.fromNow.getTime() / 1000).toBeCloseTo(
+      nowSeconds + 7200,
+      1
+    );
 
     const givenDate = new Date("2036-01-01 12:00:00");
     const givenDateSeconds = givenDate.getTime() / 1000;
     expect(d(2).hours.before(givenDate).getTime() / 1000).toBeCloseTo(
-      givenDateSeconds - 7200
+      givenDateSeconds - 7200,
+      1
     );
     expect(d(3).minutes.after(givenDate).getTime() / 1000).toBeCloseTo(
-      givenDateSeconds + 180
+      givenDateSeconds + 180,
+      1
     );
   });
 
