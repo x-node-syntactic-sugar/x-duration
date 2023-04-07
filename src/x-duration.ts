@@ -1,32 +1,24 @@
 import { DateTime as LuxonDateTime, Duration as LuxonDuration } from "luxon";
 
-export type XDurationInput =
-  | { years: number }
-  | { quarters: number }
-  | { months: number }
-  | { weeks: number }
-  | { days: number }
-  | { hours: number }
-  | { minutes: number }
-  | { seconds: number }
-  | { milliseconds: number };
+export type XDurationUnit =
+  | "years"
+  | "quarters"
+  | "months"
+  | "weeks"
+  | "days"
+  | "hours"
+  | "minutes"
+  | "seconds"
+  | "milliseconds";
 
-export interface XDurationLikeObject {
-  years?: number | undefined;
-  quarters?: number | undefined;
-  months?: number | undefined;
-  weeks?: number | undefined;
-  days?: number | undefined;
-  hours?: number | undefined;
-  minutes?: number | undefined;
-  seconds?: number | undefined;
-  milliseconds?: number | undefined;
-}
+export type XDurationLikeObject = {
+  [key in XDurationUnit]?: number;
+};
 
 export class XDuration {
   #duration: LuxonDuration;
 
-  constructor(parts: XDurationInput) {
+  constructor(parts: XDurationLikeObject) {
     this.#duration = LuxonDuration.fromObject(parts);
   }
 

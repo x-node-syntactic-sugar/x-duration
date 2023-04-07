@@ -1,81 +1,30 @@
-import { XDuration } from "./x-duration";
+import { XDuration, XDurationUnit } from "./x-duration";
 
-export class XDurationFactory {
-  value: number;
+export const unitAliases = {
+  milliseconds: ["milliseconds", "millisecond", "ms"],
+  seconds: ["seconds", "second", "s"],
+  minutes: ["minutes", "minute", "m"],
+  hours: ["hours", "hour", "h"],
+  days: ["days", "day", "D"],
+  weeks: ["weeks", "week", "W"],
+  months: ["months", "month", "M"],
+  quarters: ["quarters", "quarter", "Q"],
+  years: ["years", "year", "Y"],
+} as const;
 
-  constructor(value: number) {
-    this.value = value;
-  }
+export type XDurationUnitInput = typeof unitAliases[XDurationUnit][number];
 
-  get milliseconds(): XDuration {
-    return new XDuration({ milliseconds: this.value });
-  }
+// Factory to create durations
+export const XDurationFactory = (value: number, unit: XDurationUnitInput) =>
+  new XDuration({ [reversedUnitAliases[unit]]: value });
 
-  get millisecond(): XDuration {
-    return this.milliseconds;
-  }
-
-  get seconds(): XDuration {
-    return new XDuration({ seconds: this.value });
-  }
-
-  get second(): XDuration {
-    return this.seconds;
-  }
-
-  get minutes(): XDuration {
-    return new XDuration({ minutes: this.value });
-  }
-
-  get minute(): XDuration {
-    return this.minutes;
-  }
-
-  get hour(): XDuration {
-    return this.hours;
-  }
-
-  get hours(): XDuration {
-    return new XDuration({ hours: this.value });
-  }
-
-  get days(): XDuration {
-    return new XDuration({ days: this.value });
-  }
-
-  get day(): XDuration {
-    return this.days;
-  }
-
-  get weeks(): XDuration {
-    return new XDuration({ weeks: this.value });
-  }
-
-  get week(): XDuration {
-    return this.weeks;
-  }
-
-  get months(): XDuration {
-    return new XDuration({ months: this.value });
-  }
-
-  get month(): XDuration {
-    return this.months;
-  }
-
-  get quarters(): XDuration {
-    return new XDuration({ quarters: this.value });
-  }
-
-  get quarter(): XDuration {
-    return this.quarters;
-  }
-
-  get years(): XDuration {
-    return new XDuration({ years: this.value });
-  }
-
-  get year(): XDuration {
-    return this.years;
-  }
-}
+const reversedUnitAliases = Object.entries(unitAliases).reduce(
+  (acc, [unit, aliases]) => ({
+    ...acc,
+    ...(aliases as readonly string[]).reduce(
+      (acc2, alias) => ({ ...acc2, [alias]: unit }),
+      {}
+    ),
+  }),
+  {}
+) as { [K in XDurationUnitInput]: XDurationUnit };

@@ -1,12 +1,13 @@
 import { XDuration } from "./x-duration";
-import { XDurationFactory } from "./x-duration-factory";
+import { XDurationFactory, XDurationUnitInput } from "./x-duration-factory";
 
 export { XDuration, XDurationFactory };
 
-// Returns a factory to create durations
-export const d = (value: number) => new XDurationFactory(value);
+// Factory to create durations
+export const d = (value: number, unit: XDurationUnitInput) =>
+  XDurationFactory(value, unit);
 
 // Re-wrap a duration (in milliseconds) after summing them
-d.sum = (value: number) => new XDuration({ milliseconds: value }).rescale();
+d.sum = (value: number) => XDurationFactory(value, "milliseconds").rescale();
 
 export default d;
