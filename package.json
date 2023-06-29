@@ -34,7 +34,7 @@
     "rollup": "3.25.3",
     "semantic-release": "21.0.5",
     "ts-jest": "29.1.0",
-    "typescript": "5.1.5"
+    "typescript": "5.1.6"
   },
   "engines": {
     "node": ">=12"
